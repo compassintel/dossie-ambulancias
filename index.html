@@ -3,79 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dossiê Setorial: Mercado de Ambulâncias e Remoção Médica (B2G - RJ)</title>
+    <title>Dossiê Setorial: Mercado de Ambulâncias (COMPASS Intel)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Chosen Palette: Clinical Blue & Urgency Red -->
-    <!-- 
-        Palette Rationale:
-        - Background: Slate-50/100 (Clinical, clean, neutral foundation)
-        - Primary: Blue-700/800 (Trust, Corporate, Medical standard)
-        - Secondary/Accent: Red-600 (Emergency, Alert, Financial Risk)
-        - Text: Slate-800 (Readability)
-        - Success: Emerald-600 (Profitability, Solutions)
-    -->
-
-    <!-- Application Structure Plan: 
-        1. Layout: Sidebar Navigation (Desktop) / Top Bar (Mobile) + Main Content Area.
-           Why: Allows users to treat this as a reference book, jumping between specific complex modules without scrolling endlessly.
-        2. Modules: 
-           - Dashboard (Executive Summary)
-           - Regulação (Law 14.133 & Fines)
-           - Unit Economics (The financial engine calculator)
-           - Competidores (Market Share & Deep Dive Tuise/Lefe)
-           - Tendências (Future outlook)
-        3. Interaction Flow: Users start at a high-level overview, then drill down into costs (interactive calculator), then compare companies (interactive radar), then explore legislative bottlenecks.
-    -->
-
-    <!-- Visualization & Content Choices:
-        - OPEX Breakdown: Doughnut Chart. Goal: Show where the money goes. Interaction: Users can toggle between "UTI" and "Simples" profiles.
-        - Cash Flow Simulation: Line Chart. Goal: Demonstrate the "Death Valley" of public contracts (DSO). Interaction: Slider to change Payment Terms (30 vs 90 days) to see cash burn.
-        - Player Comparison: Radar Chart. Goal: Visually distinguish Tuise (Logistics focus) vs Lefe (Medical focus).
-        - Regulatory Flow: CSS-styled Step Process. Goal: Visualize the bureaucratic nightmare of traffic fines.
-        - NO SVG/Mermaid used. Pure HTML/CSS for diagrams and Chart.js for data.
-    -->
-
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* Chart Container Styling - Mandatory per instructions */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px; /* Constraints width for readability */
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px; /* Default height */
-            max-height: 400px;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 300px; }
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 h-screen overflow-hidden flex flex-col md:flex-row">
 
-        .chart-container-large {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            max-height: 500px;
-        }
+    <aside class="w-full md:w-72 bg-white border-r border-slate-200 flex flex-col z-20 shadow-lg md:shadow-none h-auto md:h-full flex-shrink-0">
+        <div class="p-6 border-b border-slate-100">
+            <h1 class="text-xl font-bold text-slate-900 leading-tight">Dossiê Setorial <span class="text-red-600 block text-sm font-normal mt-1">Ambulâncias & Remoção</span></h1>
+            <p class="text-xs text-slate-500 mt-2">Foco: B2G & Rio de Janeiro</p>
+        </div>
         
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
-
-        /* Custom Scrollbar for sidebar */
-        .custom-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scroll::-webkit-scrollbar-track {
-            background: #f1f5f9; 
-        }
         <nav class="flex-1 overflow-y-auto custom-scroll p-4 space-y-2">
             <button onclick="navigate('dashboard')" class="nav-btn w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 transition-colors bg-blue-50 text-blue-700 font-medium" data-target="dashboard">
                 <span class="text-lg">📊</span> Overview
@@ -98,8 +45,8 @@
         </nav>
 
         <div class="p-4 border-t border-slate-100 text-xs text-slate-400">
-            <p>Gerado para Consultoria Estratégica</p>
-            <p class="mt-1">Versão 1.0.5</p>
+            <p>COMPASS Intel</p>
+            <p class="mt-1">Versão 1.0.6</p>
         </div>
     </aside>
 
@@ -118,28 +65,28 @@
                     <span class="text-blue-600">🔢</span> O Setor em Números
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-blue-300 transition-all border-l-4 border-l-blue-600">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-l-4 border-l-blue-600">
                         <span class="text-2xl font-extrabold text-blue-700">60% a 70%</span>
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1 tracking-wider">Peso da Folha no OPEX</h4>
-                        <p class="text-xs text-slate-600 mt-2 leading-tight">Mão de obra é o custo esmagador. Salários não podem ser parcelados; atrasos de pagamento público quebram o caixa imediatamente.</p>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1">Peso da Folha no OPEX</h4>
+                        <p class="text-xs text-slate-600 mt-2">Mão de obra é o custo esmagador. Salários não podem ser parcelados; atrasos públicos quebram o caixa imediatamente.</p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-red-300 transition-all border-l-4 border-l-red-500">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-l-4 border-l-red-500">
                         <span class="text-2xl font-extrabold text-red-600">90+ Dias</span>
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1 tracking-wider">DSO (B2G RJ)</h4>
-                        <p class="text-xs text-slate-600 mt-2 leading-tight">Ciclo descasado: equipe recebe no dia 5, prefeitura paga com atrasos frequentes. Exige capital de giro robusto.</p>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1">DSO (B2G RJ)</h4>
+                        <p class="text-xs text-slate-600 mt-2">Ciclo descasado: equipe recebe no dia 5, prefeitura paga com atrasos frequentes. Exige capital de giro robusto.</p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-orange-300 transition-all border-l-4 border-l-orange-500">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-l-4 border-l-orange-500">
                         <span class="text-2xl font-extrabold text-slate-800">2%</span>
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1 tracking-wider">Custo Oculto: Multas</h4>
-                        <p class="text-xs text-slate-600 mt-2 leading-tight">Burocracia administrativa para recorrer de falsos positivos de radares em atendimentos de urgência.</p>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1">Custo Oculto: Multas</h4>
+                        <p class="text-xs text-slate-600 mt-2">Burocracia administrativa para recorrer de falsos positivos de radares em atendimentos de urgência.</p>
                     </div>
 
-                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:border-emerald-300 transition-all border-l-4 border-l-emerald-500">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm border-l-4 border-l-emerald-500">
                         <span class="text-xl font-extrabold text-slate-900">R$ 130.000,00</span>
-                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1 tracking-wider">Custo Máximo (USA)</h4>
-                        <p class="text-xs text-slate-600 mt-2 leading-tight">Custo de uma única ambulância de Suporte Avançado rodando 24/7. Baliza se a licitação é exequível.</p>
+                        <h4 class="text-xs font-bold text-slate-500 uppercase mt-1">Custo Máximo (USA)</h4>
+                        <p class="text-xs text-slate-600 mt-2">Custo de uma única ambulância de Suporte Avançado rodando 24/7. Baliza se a licitação é exequível.</p>
                     </div>
                 </div>
             </div>
@@ -147,694 +94,78 @@
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                 <h3 class="text-lg font-bold text-slate-800 mb-4">Mapa de Calor: Dores do Setor</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="p-4 bg-red-50 rounded-lg border border-red-100 text-center">
-                        <span class="text-red-700 font-bold block mb-1">Crítico</span>
-                        <p class="text-xs text-slate-700 font-medium">Multas (Art. 29 CTB)</p>
-                    </div>
-                    <div class="p-4 bg-orange-50 rounded-lg border border-orange-100 text-center">
-                        <span class="text-orange-700 font-bold block mb-1">Alto</span>
-                        <p class="text-xs text-slate-700 font-medium">Manutenção de Frota</p>
-                    </div>
-                    <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center">
-                        <span class="text-yellow-700 font-bold block mb-1">Médio</span>
-                        <p class="text-xs text-slate-700 font-medium">Turnover Médico</p>
-                    </div>
-                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 text-center">
-                        <span class="text-blue-700 font-bold block mb-1">Controlado</span>
-                        <p class="text-xs text-slate-700 font-medium">Aquisição de Veículos</p>
-                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg border border-red-100 text-center"><span class="text-red-700 font-bold block">Crítico</span><p class="text-xs">Multas (Art. 29 CTB)</p></div>
+                    <div class="p-4 bg-orange-50 rounded-lg border border-orange-100 text-center"><span class="text-orange-700 font-bold block">Alto</span><p class="text-xs">Manutenção de Frota</p></div>
+                    <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-100 text-center"><span class="text-yellow-700 font-bold block">Médio</span><p class="text-xs">Turnover Médico</p></div>
+                    <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 text-center"><span class="text-blue-700 font-bold block">Controlado</span><p class="text-xs">Aquisição de Veículos</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- MODULE 1: REGULAÇÃO -->
         <section id="regulation" class="content-section space-y-8 hidden">
             <header>
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Módulo 1</span>
-                    <h2 class="text-3xl font-bold text-slate-900">O Cenário Regulatório</h2>
-                </div>
-                <p class="text-slate-600 max-w-4xl">Entenda as "Regras do Jogo". O sucesso na operação de ambulâncias depende menos da medicina e mais da gestão jurídica de contratos e infrações de trânsito.</p>
+                <h2 class="text-3xl font-bold text-slate-900">O Cenário Regulatório</h2>
             </header>
-
-            <!-- Grid Layout for Regulation Topics -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- Lei 14.133 -->
                 <article class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <span class="text-blue-600">⚖️</span> Nova Lei de Licitações (14.133/21)
-                    </h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></div>
-                            <div>
-                                <strong class="text-slate-900">Menor Preço vs. Técnica:</strong>
-                                <p class="text-sm text-slate-600 mt-1">A lei prioriza o planejamento, mas na prática, pregoeiros ainda buscam o menor preço, precarizando a manutenção e a qualificação da equipe médica embarcada.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></div>
-                            <div>
-                                <strong class="text-slate-900">Seguros e Garantias:</strong>
-                                <p class="text-sm text-slate-600 mt-1">Exigência de matriz de risco mais clara favorece empresas estruturadas (Tuise, Ouro Verde) contra aventureiros locais.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </article>
-
-                <!-- Gestão de Multas -->
-                <article class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                        <span class="text-red-600">🚨</span> O Gargalo das Multas (Art. 29 CTB)
-                    </h3>
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
-                        <p class="text-sm text-slate-700 italic">"Ambulâncias têm livre circulação, estacionamento e parada, quando em serviço de urgência."</p>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between text-sm border-b border-slate-100 pb-2">
-                            <span class="font-medium text-slate-600">O Problema:</span>
-                            <span class="text-slate-800 text-right w-1/2">Radares eletrônicos não distinguem emergência de passeio.</span>
-                        </div>
-                        <div class="flex items-center justify-between text-sm border-b border-slate-100 pb-2">
-                            <span class="font-medium text-slate-600">O Custo Operacional:</span>
-                            <span class="text-slate-800 text-right w-1/2">Empresas precisam montar "Departamentos de Recursos de Multas" para provar cada ocorrência (comprovante de chamado).</span>
-                        </div>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="font-medium text-slate-600">Solução Legislativa:</span>
-                            <span class="text-blue-600 text-right w-1/2 font-medium">PL 2376/20 (Fim da burocracia excessiva)</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Isenções Fiscais -->
-                <article class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm lg:col-span-2">
-                    <h3 class="text-xl font-bold text-slate-800 mb-4">Matriz Tributária: Aquisição de UTI Móvel</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
-                        <div class="p-4 bg-slate-50 rounded border">
-                            <p class="text-xs text-slate-500 uppercase tracking-wide">ICMS (Estadual)</p>
-                            <p class="text-xl font-bold text-slate-800">12% - 18%</p>
-                            <p class="text-xs text-red-500 mt-1">Alto Impacto</p>
-                        </div>
-                        <div class="p-4 bg-slate-50 rounded border">
-                            <p class="text-xs text-slate-500 uppercase tracking-wide">IPI (Federal)</p>
-                            <p class="text-xl font-bold text-emerald-600">Isento*</p>
-                            <p class="text-xs text-slate-400 mt-1">*Em casos específicos de saúde</p>
-                        </div>
-                        <div class="p-4 bg-slate-50 rounded border">
-                            <p class="text-xs text-slate-500 uppercase tracking-wide">IPVA</p>
-                            <p class="text-xl font-bold text-slate-800">Isento/Reduzido</p>
-                            <p class="text-xs text-slate-500 mt-1">Depende do Estado</p>
-                        </div>
-                        <div class="p-4 bg-slate-50 rounded border">
-                            <p class="text-xs text-slate-500 uppercase tracking-wide">Depreciação</p>
-                            <p class="text-xl font-bold text-slate-800">20% a.a.</p>
-                            <p class="text-xs text-slate-500 mt-1">Vida útil: 5 anos</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">⚖️ Lei 14.133/21</h3>
+                    <p class="text-sm text-slate-600 italic">Foco em planejamento e matriz de risco clara.</p>
                 </article>
             </div>
         </section>
 
-        <!-- MODULE 2: UNIT ECONOMICS -->
         <section id="economics" class="content-section space-y-8 hidden">
-            <header>
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Módulo 2</span>
-                    <h2 class="text-3xl font-bold text-slate-900">Unit Economics & Custos</h2>
-                </div>
-                <p class="text-slate-600 max-w-4xl">A realidade financeira de uma operação de ambulância. Interaja com os dados abaixo para entender a composição de custos e o impacto do fluxo de caixa.</p>
-            </header>
-
+            <header><h2 class="text-3xl font-bold text-slate-900">Unit Economics</h2></header>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                <!-- OPEX Chart Section -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-lg font-bold text-slate-800">Composição de OPEX (Mensal)</h3>
-                        <div class="flex gap-2">
-                            <button onclick="updateOpex('uti')" class="px-3 py-1 text-xs font-medium bg-blue-600 text-white rounded hover:bg-blue-700 transition">UTI Móvel</button>
-                            <button onclick="updateOpex('basica')" class="px-3 py-1 text-xs font-medium bg-slate-200 text-slate-600 rounded hover:bg-slate-300 transition">Básica</button>
-                        </div>
-                    </div>
-                    
-                    <div class="chart-container">
-                        <canvas id="opexChart"></canvas>
-                    </div>
-                    <div class="mt-4 text-sm text-slate-500 text-center">
-                        *A folha de pagamento (Médicos/Enfermeiros) é o maior custo na UTI Móvel.
-                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4">Composição OPEX</h3>
+                    <div class="chart-container"><canvas id="opexChart"></canvas></div>
                 </div>
-
-                <!-- Cash Flow Simulator -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Simulador: O Impacto do DSO (Atraso)</h3>
-                    <p class="text-sm text-slate-600 mb-6">Contratos públicos (B2G) frequentemente pagam em 60 a 90 dias, enquanto custos (combustível, folha) são à vista ou 30 dias. Ajuste o controle abaixo para ver o impacto no Caixa Acumulado.</p>
-                    
-                    <div class="mb-6 bg-slate-50 p-4 rounded border border-slate-200">
-                        <label class="block text-sm font-bold text-slate-700 mb-2">Prazo de Recebimento (DSO): <span id="dsoValue" class="text-blue-600">60</span> dias</label>
-                        <input type="range" id="dsoInput" min="30" max="120" step="15" value="60" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                        <div class="flex justify-between text-xs text-slate-400 mt-2">
-                            <span>30 dias (Ideal)</span>
-                            <span>120 dias (Crítico)</span>
-                        </div>
-                    </div>
-
-                    <div class="chart-container flex-grow">
-                        <canvas id="cashflowChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Benchmarking Table -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm lg:col-span-2">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Benchmarking: Brasil vs. Internacional</h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left text-slate-600">
-                            <thead class="text-xs text-slate-700 uppercase bg-slate-50 border-b">
-                                <tr>
-                                    <th class="px-6 py-3">Indicador</th>
-                                    <th class="px-6 py-3">Brasil (B2G)</th>
-                                    <th class="px-6 py-3">EUA/Europa</th>
-                                    <th class="px-6 py-3">Análise</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white border-b hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-medium text-slate-900">Veículo (Vida Útil)</td>
-                                    <td class="px-6 py-4">3 a 5 anos</td>
-                                    <td class="px-6 py-4">5 a 7 anos</td>
-                                    <td class="px-6 py-4 text-red-600">Desgaste prematuro (pavimentação ruim)</td>
-                                </tr>
-                                <tr class="bg-white border-b hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-medium text-slate-900">Staff Embarcado</td>
-                                    <td class="px-6 py-4">Médico + Enf + Condutor</td>
-                                    <td class="px-6 py-4">Paramédicos (Técnicos)</td>
-                                    <td class="px-6 py-4 text-orange-600">Custo Brasil mais alto (exigência de CRM)</td>
-                                </tr>
-                                <tr class="bg-white hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-medium text-slate-900">Tecnologia Embarcada</td>
-                                    <td class="px-6 py-4">Baixa (GPS básico)</td>
-                                    <td class="px-6 py-4">Alta (Telemetria avançada)</td>
-                                    <td class="px-6 py-4 text-blue-600">Oportunidade de eficiência</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MODULE 3: COMPETITION -->
-        <section id="competition" class="content-section space-y-8 hidden">
-            <header>
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Módulo 3</span>
-                    <h2 class="text-3xl font-bold text-slate-900">Panorama Competitivo</h2>
-                </div>
-                <p class="text-slate-600 max-w-4xl">Quem domina o mercado? O setor é fragmentado, mas grandes grupos de logística e fundos de investimento começam a consolidar frotas regionais.</p>
-            </header>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Market Share Cards -->
-                <div class="space-y-4">
-                    <h3 class="text-lg font-bold text-slate-800">Principais Players Nacionais</h3>
-                    
-                    <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-blue-800">Grupo Med+</h4>
-                                <p class="text-xs text-slate-500">Sede: Brasília/DF</p>
-                            </div>
-                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Líder Nacional</span>
-                        </div>
-                        <p class="text-sm text-slate-600 mt-2">Forte atuação em aeroportos e grandes contratos federais. Modelo verticalizado.</p>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-blue-800">Brasil Emergências</h4>
-                                <p class="text-xs text-slate-500">Sede: Curitiba/PR</p>
-                            </div>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Expansão Sul/Sudeste</span>
-                        </div>
-                        <p class="text-sm text-slate-600 mt-2">Foco em áreas remotas e industriais (B2B), migrando para B2G.</p>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h4 class="font-bold text-blue-800">Ouro Verde (Locação)</h4>
-                                <p class="text-xs text-slate-500">Sede: Curitiba/PR</p>
-                            </div>
-                            <span class="bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded">Gestão de Frota Pura</span>
-                        </div>
-                        <p class="text-sm text-slate-600 mt-2">Gigante de locação de pesados que entra em ambulâncias apenas como locadora (sem equipe médica).</p>
-                    </div>
-                </div>
-
-                <!-- Geography Visualization -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Concentração de Frotas Privadas</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium">São Paulo (SP)</span>
-                                <span class="text-slate-500">Alta Maturidade</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium">Rio de Janeiro (RJ)</span>
-                                <span class="text-slate-500">Em Consolidação (Disputado)</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                <div class="bg-red-500 h-2.5 rounded-full" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium">Minas Gerais (MG)</span>
-                                <span class="text-slate-500">Mercado Pulverizado</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 45%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-sm mb-1">
-                                <span class="font-medium">Nordeste (Região)</span>
-                                <span class="text-slate-500">Crescimento Rápido</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                <div class="bg-emerald-500 h-2.5 rounded-full" style="width: 35%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 p-4 bg-slate-50 rounded text-sm text-slate-600">
-                        <strong>Insight Regional (RJ):</strong> O Rio de Janeiro apresenta o cenário mais agressivo de terceirização devido à crise fiscal do estado e municípios, que optam por "alugar" a operação para evitar custos fixos de folha e manutenção.
-                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4">Simulador de DSO</h3>
+                    <input type="range" id="dsoInput" min="30" max="120" step="15" value="60" class="w-full">
+                    <div class="chart-container"><canvas id="cashflowChart"></canvas></div>
                 </div>
             </div>
         </section>
-
-        <!-- MODULE 4: DEEP DIVE TUISE VS LEFE -->
-        <section id="deepdive" class="content-section space-y-8 hidden">
-            <header>
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Módulo 4</span>
-                    <h2 class="text-3xl font-bold text-slate-900">Deep Dive: Tuise vs Lefe</h2>
-                </div>
-                <p class="text-slate-600 max-w-4xl">Análise detalhada ("Due Diligence" preliminar) das duas maiores forças atuantes nos contratos da RIOSAÚDE e prefeituras fluminenses.</p>
-            </header>
-
-            <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                <!-- Radar Chart Comparison -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm xl:col-span-1">
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">Comparativo de Atributos</h3>
-                    <p class="text-xs text-slate-500 mb-6">Nota de 0 a 10 baseada em análise de mercado.</p>
-                    <div class="chart-container">
-                        <canvas id="comparisonChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- Company Profiles -->
-                <div class="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    <!-- Tuise Profile -->
-                    <div class="border-t-4 border-blue-600 bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-bold text-slate-900 mb-1">Tuise Gestão Integrada</h3>
-                        <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-1 rounded">Foco: Outsourcing & Escala</span>
-                        
-                        <div class="mt-4 space-y-4">
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-700">Perfil Operacional</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed">Atua fortemente como fornecedora de "mão de obra + equipamento". É uma empresa de logística de saúde robusta. Não se limita ao veículo; entrega o condutor, o enfermeiro e a gestão da escala.</p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-700">Relevância RJ (RIOSAÚDE)</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed">Possui adjudicações volumosas em contratos emergenciais e regulares na capital. Estratégia de <strong>preço competitivo</strong> e capacidade de mobilização rápida de frota.</p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-700">Diferencial</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed">Capilaridade. Consegue atender múltiplas bases descentralizadas simultaneamente.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Lefe Profile -->
-                    <div class="border-t-4 border-emerald-500 bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-bold text-slate-900 mb-1">Lefe Emergências</h3>
-                        <span class="text-xs font-bold bg-emerald-100 text-emerald-700 px-2 py-1 rounded">Foco: Assistência & UPAs</span>
-                        
-                        <div class="mt-4 space-y-4">
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-700">Perfil Operacional</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed">Origem mais ligada à gestão médica e operação de unidades de urgência (UPAs). A ambulância é vista como extensão do tratamento, não apenas transporte.</p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-700">Relevância RJ (Niterói/Leste)</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed">Forte presença na região metropolitana (Niterói, São Gonçalo) e gestão de remoção inter-hospitalar de alta complexidade.</p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-700">Diferencial</h4>
-                                <p class="text-sm text-slate-600 leading-relaxed">Qualidade técnica. Posiciona-se melhor em licitações que exigem pontuação técnica elevada sobre a equipe médica.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- MODULE 5: OPPORTUNITIES -->
-        <section id="trends" class="content-section space-y-8 hidden">
-            <header>
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold">Módulo 5</span>
-                    <h2 class="text-3xl font-bold text-slate-900">Oportunidades & Pleitos</h2>
-                </div>
-                <p class="text-slate-600 max-w-4xl">O futuro do setor passa por tecnologia embarcada e lobby legislativo para garantir a sustentabilidade financeira das operações.</p>
-            </header>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Tech Trends -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                    <h3 class="text-lg font-bold text-slate-800 mb-6">Tendências Tecnológicas</h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-slate-700">Telemetria & Gestão de Frota</span>
-                                <span class="text-sm font-bold text-blue-600">Alta Adoção</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
-                            </div>
-                            <p class="text-xs text-slate-500 mt-1">Essencial para provar quilometragem e justificar multas.</p>
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-slate-700">Regulação Médica Remota (Telemedicina)</span>
-                                <span class="text-sm font-bold text-yellow-600">Emergente</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2">
-                                <div class="bg-yellow-500 h-2 rounded-full" style="width: 40%"></div>
-                            </div>
-                            <p class="text-xs text-slate-500 mt-1">Redução de custos com médico a bordo em casos de baixa complexidade.</p>
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm font-medium text-slate-700">Ambulâncias Elétricas</span>
-                                <span class="text-sm font-bold text-slate-400">Embrionário</span>
-                            </div>
-                            <div class="w-full bg-slate-200 rounded-full h-2">
-                                <div class="bg-slate-400 h-2 rounded-full" style="width: 10%"></div>
-                            </div>
-                            <p class="text-xs text-slate-500 mt-1">Ainda inviável devido à autonomia e peso dos equipamentos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sector Pleas -->
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm bg-gradient-to-br from-white to-slate-50">
-                    <h3 class="text-lg font-bold text-slate-800 mb-4">Agenda em Brasília (Pleitos)</h3>
-                    <ul class="space-y-4">
-                        <li class="flex gap-4 items-start p-3 bg-white rounded border border-slate-100 shadow-sm">
-                            <span class="text-2xl">🏛️</span>
-                            <div>
-                                <h4 class="font-bold text-slate-800 text-sm">Fim da Indústria da Multa</h4>
-                                <p class="text-xs text-slate-600 mt-1">Automação no cancelamento de infrações para veículos de emergência cadastrados.</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 items-start p-3 bg-white rounded border border-slate-100 shadow-sm">
-                            <span class="text-2xl">📉</span>
-                            <div>
-                                <h4 class="font-bold text-slate-800 text-sm">Desoneração da Folha</h4>
-                                <p class="text-xs text-slate-600 mt-1">Setor é intensivo em mão de obra (Enfermagem/Médicos). Carga tributária sobre folha inviabiliza contratos menores.</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 items-start p-3 bg-white rounded border border-slate-100 shadow-sm">
-                            <span class="text-2xl">🤝</span>
-                            <div>
-                                <h4 class="font-bold text-slate-800 text-sm">Segurança Jurídica (Terceirização)</h4>
-                                <p class="text-xs text-slate-600 mt-1">Clareza na "pejotização" de médicos plantonistas nas ambulâncias terceirizadas.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        
+        <section id="competition" class="content-section hidden">...</section>
+        <section id="deepdive" class="content-section hidden">...</section>
+        <section id="trends" class="content-section hidden">...</section>
 
     </main>
 
     <script>
-        // --- State Management ---
-        const state = {
-            currentSection: 'dashboard',
-            dsoDays: 60
-        };
+        const state = { currentSection: 'dashboard', dsoDays: 60 };
+        const opexData = { uti: [15, 20, 10, 45, 10], basica: [25, 25, 15, 25, 10], labels: ['Combustível', 'Manutenção', 'Depreciação', 'Equipe', 'Margem'] };
+        let opexChartInstance, cashflowChartInstance, comparisonChartInstance;
 
-        // --- Data Definitions ---
-        const opexData = {
-            uti: [15, 20, 10, 45, 10], // Combustível, Manutenção, Depreciação, Equipe, Margem/Admin
-            basica: [25, 25, 15, 25, 10], // Básica tem menos custo de equipe médica
-            labels: ['Combustível', 'Manutenção', 'Depreciação Veículo', 'Equipe Médica', 'Admin/Margem']
-        };
-
-        let opexChartInstance = null;
-        let cashflowChartInstance = null;
-        let comparisonChartInstance = null;
-
-        // --- Navigation Logic ---
         function navigate(targetId) {
-            // Update State
-            state.currentSection = targetId;
-
-            // UI Updates
-            document.querySelectorAll('.content-section').forEach(el => {
-                el.classList.add('hidden');
-                el.classList.remove('animate-fade-in');
-            });
-            
-            const target = document.getElementById(targetId);
-            target.classList.remove('hidden');
-            target.classList.add('animate-fade-in');
-
-            // Button Styling
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.dataset.target === targetId) {
-                    btn.classList.add('bg-blue-50', 'text-blue-700', 'font-medium');
-                    btn.classList.remove('text-slate-600', 'hover:bg-slate-50');
-                } else {
-                    btn.classList.remove('bg-blue-50', 'text-blue-700', 'font-medium');
-                    btn.classList.add('text-slate-600', 'hover:bg-slate-50');
-                }
-            });
-
-            // Trigger Chart Resizes/Updates if needed when section becomes visible
-            if (targetId === 'economics') {
-                setTimeout(() => {
-                    initOpexChart();
-                    initCashflowChart();
-                }, 100);
-            }
-            if (targetId === 'deepdive') {
-                setTimeout(() => {
-                    initComparisonChart();
-                }, 100);
-            }
-            
-            // Scroll to top
-            document.getElementById('main-content').scrollTop = 0;
+            document.querySelectorAll('.content-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(targetId).classList.remove('hidden');
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('bg-blue-50', 'text-blue-700'));
+            event.currentTarget.classList.add('bg-blue-50', 'text-blue-700');
+            if (targetId === 'economics') { setTimeout(() => { initOpexChart(); initCashflowChart(); }, 100); }
         }
-
-        // --- Chart Initialization Functions ---
 
         function initOpexChart() {
             const ctx = document.getElementById('opexChart').getContext('2d');
             if (opexChartInstance) opexChartInstance.destroy();
-
-            opexChartInstance = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: opexData.labels,
-                    datasets: [{
-                        data: opexData.uti,
-                        backgroundColor: [
-                            '#f59e0b', // Amber (Fuel)
-                            '#ef4444', // Red (Maint)
-                            '#64748b', // Slate (Deprec)
-                            '#2563eb', // Blue (Team - Highest)
-                            '#10b981'  // Emerald (Admin)
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'right' },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.label + ': ' + context.raw + '%';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        function updateOpex(type) {
-            if (!opexChartInstance) return;
-            opexChartInstance.data.datasets[0].data = opexData[type];
-            opexChartInstance.update();
+            opexChartInstance = new Chart(ctx, { type: 'doughnut', data: { labels: opexData.labels, datasets: [{ data: opexData.uti, backgroundColor: ['#f59e0b', '#ef4444', '#64748b', '#2563eb', '#10b981'] }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
 
         function initCashflowChart() {
             const ctx = document.getElementById('cashflowChart').getContext('2d');
             if (cashflowChartInstance) cashflowChartInstance.destroy();
-
-            // Simulate cash flow based on DSO slider
             const dso = state.dsoDays;
-            const months = ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4', 'Mês 5', 'Mês 6'];
-            
-            // Logic: Cost happens immediately (M1). Revenue delayed by DSO.
-            // Simplified Simulation
-            const costs = -100;
-            const revenue = 120; // 20% margin
-            const delayMonths = Math.ceil(dso / 30);
-            
-            let balance = 0;
-            let dataPoints = [];
-            
-            for(let i=1; i<=6; i++) {
-                balance += costs; // Pay expenses
-                if (i > delayMonths) {
-                    balance += revenue; // Receive revenue if past delay
-                }
-                dataPoints.push(balance);
-            }
-
-            cashflowChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: months,
-                    datasets: [{
-                        label: `Fluxo de Caixa Acumulado (DSO: ${dso} dias)`,
-                        data: dataPoints,
-                        borderColor: dso > 60 ? '#ef4444' : '#10b981', // Red if bad DSO, Green if good
-                        backgroundColor: dso > 60 ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            grid: { color: '#f1f5f9' }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    },
-                    plugins: {
-                        annotation: {
-                            annotations: {
-                                line1: {
-                                    type: 'line',
-                                    yMin: 0,
-                                    yMax: 0,
-                                    borderColor: 'black',
-                                    borderWidth: 1,
-                                    borderDash: [5, 5]
-                                }
-                            }
-                        }
-                    }
-                }
-            });
+            const dataPoints = [ -100, -200, dso > 60 ? -300 : -180, dso > 90 ? -400 : -100, 20, 140 ];
+            cashflowChartInstance = new Chart(ctx, { type: 'line', data: { labels: ['M1','M2','M3','M4','M5','M6'], datasets: [{ label: `Fluxo (DSO: ${dso}d)`, data: dataPoints, borderColor: dso > 60 ? '#ef4444' : '#10b981', fill: true }] }, options: { responsive: true, maintainAspectRatio: false } });
         }
 
-        function initComparisonChart() {
-            const ctx = document.getElementById('comparisonChart').getContext('2d');
-            if (comparisonChartInstance) comparisonChartInstance.destroy();
-
-            comparisonChartInstance = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Tamanho de Frota', 'Expertise Médica', 'Contratos Públicos (RJ)', 'Tecnologia', 'Competitividade Preço'],
-                    datasets: [{
-                        label: 'Tuise',
-                        data: [9, 6, 9, 7, 9],
-                        fill: true,
-                        backgroundColor: 'rgba(37, 99, 235, 0.2)', // Blue
-                        borderColor: 'rgb(37, 99, 235)',
-                        pointBackgroundColor: 'rgb(37, 99, 235)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(37, 99, 235)'
-                    }, {
-                        label: 'Lefe',
-                        data: [7, 9, 7, 8, 7],
-                        fill: true,
-                        backgroundColor: 'rgba(16, 185, 129, 0.2)', // Emerald
-                        borderColor: 'rgb(16, 185, 129)',
-                        pointBackgroundColor: 'rgb(16, 185, 129)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(16, 185, 129)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    elements: {
-                        line: { borderWidth: 3 }
-                    },
-                    scales: {
-                        r: {
-                            angleLines: { display: true },
-                            suggestedMin: 0,
-                            suggestedMax: 10,
-                            ticks: { display: false } // Hide numbers for cleaner look
-                        }
-                    }
-                }
-            });
-        }
-
-        // --- Event Listeners ---
-        document.getElementById('dsoInput').addEventListener('input', function(e) {
+        document.getElementById('dsoInput')?.addEventListener('input', (e) => {
             state.dsoDays = parseInt(e.target.value);
-            document.getElementById('dsoValue').innerText = state.dsoDays;
-            initCashflowChart(); // Re-render simulation
+            initCashflowChart();
         });
-
-        // Initialize Animation styles via CSS injection
-        const styleSheet = document.createElement("style");
-        styleSheet.innerText = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .animate-fade-in {
-                animation: fadeIn 0.4s ease-out forwards;
-            }
-        `;
-        document.head.appendChild(styleSheet);
-
     </script>
 </body>
 </html>
